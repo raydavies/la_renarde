@@ -1,0 +1,54 @@
+#main {
+	background:url(../images/pompadoursmall.png) no-repeat;
+	height:875px;
+	width:1160px;
+	margin:auto;
+	position:relative;
+	padding:0 10px;
+}
+#logo {
+	position:relative;top:50px;left:-17px;
+}
+#logo span {
+	margin:auto;
+	font-size:30pt;
+	letter-spacing:10px;
+	position:absolute; top:250px; left:100px;
+	width:400px;
+}
+#border {
+	border-top:4px solid black;
+	width:500px;
+	position:relative;top:45px;left:47px;
+}
+#menubar ul {
+	list-style:none;
+	position:relative;top:50px;right:40px;
+}
+#menubar li {
+	font-weight:normal;
+	text-align:center;
+	letter-spacing:2px;
+	float:left;
+	width:150px;
+}
+#mediabox {
+	display:block;
+	width:51%;
+	position:absolute;bottom:20px;
+}
+#box {
+	height:350px;
+	margin-bottom:10px;
+	padding:10px;
+}
+#box p {
+	text-align:center;
+	margin:175px auto;
+	font-weight:bold;
+}
+.tags {
+	display:block;
+	margin:auto;
+}
+

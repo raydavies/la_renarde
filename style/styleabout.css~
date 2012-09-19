@@ -1,0 +1,21 @@
+#about {
+	padding:20px;
+}
+#bio {
+	font-weight:normal;
+	line-height:1.35em;
+	width:760px;
+	text-align:center;
+	margin:auto;
+}
+img#diamond {
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:5px;
+	padding-bottom:10px;
+}
+#oldframe {
+	height:625px;
+	width:560px;
+}

@@ -1,0 +1,65 @@
+<?php
+
+require("info.php");
+
+class viewShow {
+	public $mysql;
+	public $db;
+	public $query;
+	public $result;
+	public $numrows;
+	public $row;
+
+	public function postShow() {
+		$this->openDB();
+		$this->selectDB();
+		$this->queryDB();
+		$this->printPost();
+		$this->closeDB();
+	}
+
+		public function openDB() {
+			@$this->mysql= mysqli_connect($dbhost,$dbuser,$dbpassword);
+			if (!$this->mysql) {
+				echo "Cannot connect!";
+				exit;
+			}
+		}
+
+		public function selectDB() {
+			@$this->db = mysqli_select_db($this->mysql,$dbname);
+			if (!$this->db){
+				echo "Cannot find database!";
+				exit;
+			}
+		}
+		
+		public function queryDB() {
+			$this->query = "select * from shows";
+			@$this->result = mysqli_query($this->mysql, $this->query);
+			if (!$this->result){
+				echo "Cannot show result!";
+				exit;
+			}
+		}
+		
+		public function printPost() {
+			session_start();
+			$this->numrows = mysqli_num_rows($this->result);
+			for ($i=0; $i < $this->numrows; $i++) {
+				$this->row = mysqli_fetch_assoc($this->result);
+			$this->row['comment'] = str_replace('\r\n', '\n', $this->row['comment']);
+			echo "<div class=\"comment\"><span class=\"timestamp\">".$this->row['timestamp']." </span>";
+			echo "<span class=\"username\">".$this->row['name']."</span><br />";
+			echo "<p class=\"usercomment\">".nl2br($this->row['comment'])."<br /></p>";
+			echo "<div class=\"delete\"><a href=\"cgi/deletepost.php?postid=".$this->row['postid']."\" onclick=\"return deletePost();\">Delete</a></div></div><hr />";
+			}
+			mysqli_free_result($this->result);
+		}
+		
+		public function closeDB() {
+			mysqli_close($this->mysql);
+		}
+
+	}
+?>

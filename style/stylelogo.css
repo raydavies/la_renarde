@@ -1,0 +1,8 @@
+#logo {
+	background: url(../images/logo.png) no-repeat;
+	height:300px;
+}
+
+#logo span {
+	display:none;
+}

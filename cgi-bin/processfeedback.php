@@ -1,0 +1,35 @@
+<?php
+
+function CleanData($data)
+{
+	if (get_magic_quotes_gpc()) {
+		$data = stripslashes($data);
+	}
+		$data = str_replace("\n", '', trim($data));
+		$data = str_replace("\r", '', $data);
+		return $data;
+
+}
+
+
+$name = CleanData($_POST['name']);
+$email = CleanData($_POST['email']);
+$feedback = CleanData($_POST['feedback']);
+
+	$toaddress = "larenardemusic@gmail.com";
+
+	$subject = "Booking Inquiry";
+
+	$mailcontent = "Name: ".$name."\n".
+		"E-mail: ".$email."\n".
+		"Comments: ".$feedback."\n";
+
+	$fromaddress = "From: ".$name."<".$email.">";
+
+	mail($toaddress, $subject, $mailcontent, $fromaddress);
+
+	header("Location: ../thankyou.php");
+	die;
+
+?>
+
